@@ -22,12 +22,12 @@ using ExpectedConditions = OpenQA.Selenium.Support.UI.ExpectedConditions;
 using System.CodeDom.Compiler;
 using NUnit.Framework.Internal.Commands;
 using Microsoft.Win32;
-
+using ExploreSelenium.BaseClass;
 
 namespace ExploreSelenium
 {
     [TestFixture]
-    public class AddingBasicEntries : BaseTest
+    public class AddingBasicEntries : BaseTest, IArcliteVariable
     {
         [Test, Category("addSecond"), OrderAttribute(2)]
         public void addingInventory()

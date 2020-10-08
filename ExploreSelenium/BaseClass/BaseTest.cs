@@ -11,24 +11,23 @@ using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using ExploreSelenium.BaseClass;
 
 namespace ExploreSelenium.BaseCkass
 {
-    public class BaseTest
-    {
+    public class BaseTest 
+    {   public IArcliteVariable Variable = new 
         public IWebDriver driver;
         private String ArcliteUsername = "admin";
 
         private String ArclitePassword = "admin";
         public WebDriverWait wait;
         private String webAddress = "http://182.77.61.134/arclite.uat";
-        public Dictionary<String, int> order;
 
         //setting up the driver and the wait driver
         [SetUp]
         public void Open()
         {
-            order = new Dictionary<string, int>();
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.PageLoadStrategy = PageLoadStrategy.Default;
             driver = new ChromeDriver(chromeOptions)
@@ -36,7 +35,6 @@ namespace ExploreSelenium.BaseCkass
                 Url = webAddress
             };
             driver.Manage().Window.Maximize();
-            order.Add("Add first", 1);
 
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
 
