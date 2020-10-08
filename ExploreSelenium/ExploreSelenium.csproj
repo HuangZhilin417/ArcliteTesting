@@ -54,6 +54,7 @@
     <Compile Include="BaseClass\BaseTest.cs" />
     <Compile Include="AddingBasicEntries.cs" />
     <Compile Include="AddSalesOrderAndPush.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
