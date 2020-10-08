@@ -54,10 +54,6 @@
     <Compile Include="BaseClass\BaseTest.cs" />
     <Compile Include="AddingBasicEntries.cs" />
     <Compile Include="AddSalesOrderAndPush.cs" />
-    <Compile Include="ConsoleWrapper.cs" />
-    <Compile Include="IConsole.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="TestClass1.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
