@@ -56,6 +56,7 @@
     <Compile Include="AddingBasicEntries.cs" />
     <Compile Include="AddSalesOrderAndPush.cs" />
     <Compile Include="Class2.cs" />
+    <Compile Include="SettingsAuto.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
