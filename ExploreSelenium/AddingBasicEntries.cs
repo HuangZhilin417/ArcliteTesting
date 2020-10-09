@@ -27,7 +27,7 @@ using ExploreSelenium.BaseClass;
 namespace ExploreSelenium
 {
     [TestFixture]
-    public class AddingBasicEntries : BaseTest, IArcliteVariable
+    public class AddingBasicEntries : BaseTest
     {
         [Test, Category("addSecond"), OrderAttribute(2)]
         public void addingInventory()
