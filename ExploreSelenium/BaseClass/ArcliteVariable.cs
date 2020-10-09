@@ -16,5 +16,8 @@ namespace ExploreSelenium.BaseClass
         public string ArcliteUrl { get => _arcliteUrl; set => _arcliteUrl = value; }
         public string ArcliteUsername { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string ArclitePassword { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+
+        
     }
 }

@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 using OpenQA.Selenium.Interactions;
+using ExploreSelenium.ArcliteWebPages;
 
 namespace ExploreSelenium
 {
@@ -26,8 +27,10 @@ namespace ExploreSelenium
         [Test, OrderAttribute(3), Category("addThird")]
         public void addSalesOrder()
         {
+            currentPage = new HomePage(wait);
+
             //clicks the gear button
-            IWebElement salesOrder = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='arc-scheduler-sales']")));
+            IWebElement salesOrder = currentPage.pageElements["Order Tracking & Manangement"].webElement;
             salesOrder.Click();
 
             //switch frame

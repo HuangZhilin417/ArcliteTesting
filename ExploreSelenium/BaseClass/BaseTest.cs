@@ -12,11 +12,13 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using ExploreSelenium.BaseClass;
+using ExploreSelenium.ArcliteWebPages;
 
 namespace ExploreSelenium.BaseCkass
 {
     public class BaseTest 
-    {   public IArcliteVariable Variable = new 
+    {
+        public IArclitePage currentPage;
         public IWebDriver driver;
         private String ArcliteUsername = "admin";
 
@@ -28,22 +30,24 @@ namespace ExploreSelenium.BaseCkass
         [SetUp]
         public void Open()
         {
+            
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.PageLoadStrategy = PageLoadStrategy.Default;
             driver = new ChromeDriver(chromeOptions)
             {
                 Url = webAddress
             };
+
             driver.Manage().Window.Maximize();
-
+            
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+            currentPage = new LoginPage(wait);
 
-
-            IWebElement Username = driver.FindElement(By.XPath(".//*[@id='UserName']"));
+            IWebElement Username = currentPage.pageElements["Username"].webElement;
             Username.SendKeys(ArcliteUsername);
-            IWebElement Password = driver.FindElement(By.XPath(".//*[@id='Password']"));
+            IWebElement Password = currentPage.pageElements["Password"].webElement;
             Password.SendKeys(ArclitePassword);
-            IWebElement loginBtn = driver.FindElement(By.XPath(".//*[@id='btnlogin']"));
+            IWebElement loginBtn = currentPage.pageElements["Sign In"].webElement;
             loginBtn.Click();
         }
 

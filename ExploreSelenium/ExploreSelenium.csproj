@@ -51,10 +51,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcliteWebElements\ArcliteWebElement.cs" />
+    <Compile Include="ArcliteWebElements\IArcliteWebElement.cs" />
+    <Compile Include="ArcliteWebPages\ArcliteWebPage.cs" />
+    <Compile Include="ArcliteWebPages\HomePage.cs" />
+    <Compile Include="ArcliteWebPages\IArclitePage.cs" />
+    <Compile Include="ArcliteWebPages\LoginPage.cs" />
     <Compile Include="BaseClass\ArcliteVariable.cs" />
     <Compile Include="BaseClass\BaseTest.cs" />
     <Compile Include="AddingBasicEntries.cs" />
     <Compile Include="AddSalesOrderAndPush.cs" />
+    <Compile Include="BaseClass\IArcliteVariable.cs" />
     <Compile Include="Class2.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>

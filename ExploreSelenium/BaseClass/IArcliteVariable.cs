@@ -11,5 +11,7 @@ namespace ExploreSelenium.BaseClass
         string ArcliteUrl { get; set; }
         string ArcliteUsername { get; set; }
         string ArclitePassword { get; set; }
+
+
     }
 }
