@@ -51,23 +51,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcliteWebElementActionsVisitor\ArcliteActionVisitor.cs" />
+    <Compile Include="ArcliteInterfaces\IActionsVisitor.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteButton.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteCalender.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteDataTable.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteSearch.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteSelect.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteTextBox.cs" />
     <Compile Include="ArcliteWebElements\ArcliteWebElement.cs" />
-    <Compile Include="ArcliteWebElements\IArcliteWebElement.cs" />
+    <Compile Include="ArcliteInterfaces\IArcliteWebElement.cs" />
     <Compile Include="ArcliteWebPages\ArcliteWebPage.cs" />
-    <Compile Include="ArcliteWebPages\HomePage.cs" />
-    <Compile Include="ArcliteWebPages\IArclitePage.cs" />
-    <Compile Include="ArcliteWebPages\LoginPage.cs" />
-    <Compile Include="BaseClass\ArcliteVariable.cs" />
+    <Compile Include="ArcliteWebPages\CurrentPage.cs" />
+    <Compile Include="ArcliteWebPages\DashBoardPage\DashboardPage.cs" />
+    <Compile Include="ArcliteWebPages\DashBoardPage\DashboardPageXAWE.cs" />
+    <Compile Include="ArcliteWebPages\HomePage\HomePage.cs" />
+    <Compile Include="ArcliteInterfaces\IArclitePage.cs" />
+    <Compile Include="ArcliteWebPages\HomePage\HomePageXAWE.cs" />
+    <Compile Include="ArcliteWebPages\LoginWebPage\LoginPage.cs" />
+    <Compile Include="ArcliteWebPages\LoginWebPage\LoginPageXAWE.cs" />
+    <Compile Include="ArcliteWebPages\SalesOrderPage\OrderTrackingAndManagementPage.cs" />
+    <Compile Include="ArcliteWebPages\SalesOrderPage\OrderTrackingAndManagementXAWE.cs" />
+    <Compile Include="ArcliteWebPages\SchedulerPage.cs" />
+    <Compile Include="ArcliteWebPages\WorkstationPage.cs" />
+    <Compile Include="ArcliteInterfaces\IArcliteData.cs" />
+    <Compile Include="ArcliteInterfaces\IArcliteDataVisitor.cs" />
     <Compile Include="BaseClass\BaseTest.cs" />
     <Compile Include="AddingBasicEntries.cs" />
     <Compile Include="AddSalesOrderAndPush.cs" />
-    <Compile Include="BaseClass\IArcliteVariable.cs" />
     <Compile Include="Class2.cs" />
     <Compile Include="SettingsAuto.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ArcliteInputs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

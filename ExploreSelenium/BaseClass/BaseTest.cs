@@ -11,19 +11,20 @@ using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using ExploreSelenium.BaseClass;
 using ExploreSelenium.ArcliteWebPages;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 
 namespace ExploreSelenium.BaseCkass
 {
     public class BaseTest 
     {
-        public IArclitePage currentPage;
+        public CurrentPage currentPage;
         public IWebDriver driver;
         private String ArcliteUsername = "admin";
-
+        public IActionsVisitor visitor;
         private String ArclitePassword = "admin";
         public WebDriverWait wait;
+
         private String webAddress = "http://182.77.61.134/arclite.uat";
 
         //setting up the driver and the wait driver
@@ -41,14 +42,19 @@ namespace ExploreSelenium.BaseCkass
             driver.Manage().Window.Maximize();
             
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            currentPage = new LoginPage(wait);
+            IArclitePage login = new LoginPage(wait, driver);
+            login.runTests();
+            currentPage = new CurrentPage(login, wait, visitor);
 
-            IWebElement Username = currentPage.pageElements["Username"].webElement;
-            Username.SendKeys(ArcliteUsername);
-            IWebElement Password = currentPage.pageElements["Password"].webElement;
-            Password.SendKeys(ArclitePassword);
-            IWebElement loginBtn = currentPage.pageElements["Sign In"].webElement;
-            loginBtn.Click();
+            currentPage.pageElements["Username"].accept(visitor, ArcliteUsername);
+            currentPage.pageElements["Password"].accept(visitor, ArclitePassword);
+            currentPage.pageElements["Sign In"].accept(visitor, "");
+            /*      IWebElement Username = currentPage.pageElements["Username"].webElement;
+                  Username.SendKeys(ArcliteUsername);
+                  IWebElement Password = currentPage.pageElements["Password"].webElement;
+                  Password.SendKeys(ArclitePassword);
+                  IWebElement loginBtn = currentPage.pageElements["Sign In"].webElement;
+                  loginBtn.Click();*/
         }
 
         [TearDown]

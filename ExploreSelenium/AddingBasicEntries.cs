@@ -22,7 +22,6 @@ using ExpectedConditions = OpenQA.Selenium.Support.UI.ExpectedConditions;
 using System.CodeDom.Compiler;
 using NUnit.Framework.Internal.Commands;
 using Microsoft.Win32;
-using ExploreSelenium.BaseClass;
 
 namespace ExploreSelenium
 {
@@ -198,7 +197,7 @@ namespace ExploreSelenium
             selectedQualificationOption.Click();
 
             //clicks role dropdown
-            IWebElement roleDropDown = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='add-update-personnel']/div/div/div/label[text()='Role']/parent::div/div/div[@class='fs-label-wrap']")));
+            IWebElement roleDropDown = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//form[@id='add-update-personnel']/div/div/div/div/div[@class='fs-label-wrap']")));
             roleDropDown.Click();
 
             //get the options as a select element 

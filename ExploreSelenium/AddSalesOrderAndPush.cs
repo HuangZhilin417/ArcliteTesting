@@ -27,13 +27,15 @@ namespace ExploreSelenium
         [Test, OrderAttribute(3), Category("addThird")]
         public void addSalesOrder()
         {
-            currentPage = new HomePage(wait);
+            currentPage.changePage(new HomePage(wait, visitor));
 
-            //clicks the gear button
-            IWebElement salesOrder = currentPage.pageElements["Order Tracking & Manangement"].webElement;
-            salesOrder.Click();
 
-            //switch frame
+
+
+            //clicks the add sales order button
+            IWebElement trackingOrderAndManagement = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='arc-scheduler-sales']")));
+            driver.ExecuteJavaScript("arguments[0].click();", trackingOrderAndManagement);
+
             wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt("mainFrame"));
 
             //clicks the add sales order
@@ -52,13 +54,20 @@ namespace ExploreSelenium
 
             //get the options as a select element 
             SelectElement selectCustomerElement = new SelectElement(driver.FindElement(By.XPath("//select[@id='customer']")));
-
             selectCustomerElement.SelectByText("BCisaFB");
            
 
             //enter value for order
             IWebElement order = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//input[@id='po-no']")));
             driver.ExecuteJavaScript("arguments[0].value = 'Iphone 12 Pro Max';", order);
+
+
+
+
+
+
+
+
 
             //enter value for details
             IWebElement details = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//textarea[@id='detail']")));
@@ -83,7 +92,7 @@ namespace ExploreSelenium
 
             //clicks next month's first day
             IWebElement submit = driver.FindElement(By.XPath("//button[@id='complete-so']"));
-            submit.Click();
+            driver.ExecuteJavaScript("arguments[0].click();", submit);
 
 
             /*//select the wanted option
@@ -231,7 +240,7 @@ namespace ExploreSelenium
         {
             //clicks add checklist
             IWebElement addChecklist = driver.FindElement(By.XPath("//a[@onclick='GetChecklists(" + trueOrFalse + ")']"));
-            addChecklist.Click();
+            driver.ExecuteJavaScript("arguments[0].click();", addChecklist);
 
             //search for created list
             IWebElement search = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@id='tblChecklists_filter']/label/input")));

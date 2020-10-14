@@ -10,8 +10,16 @@ namespace ExploreSelenium.ArcliteWebPages
 {
     public interface IArclitePage
     {
+        //unique page title for every page
         string pageTitle { get; set;}
-        Dictionary<string, IArcliteWebElement> pageElements {get;}
+
+        //contains the key (name of the web element or the page title it leads to)
+        Dictionary<string, IArcliteWebElement> pageElements { get; set; }
+
+        //web driver wait
         WebDriverWait wait { get; set; }
+
+        //run tests for current page
+        void runTests();
     }
 }

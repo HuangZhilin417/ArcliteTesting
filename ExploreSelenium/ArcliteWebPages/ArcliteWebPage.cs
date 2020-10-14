@@ -1,4 +1,5 @@
-﻿using ExploreSelenium.ArcliteWebElements;
+﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+using ExploreSelenium.ArcliteWebElements;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages
 {
-    class ArcliteWebPage : IArclitePage
+    public class ArcliteWebPage : IArclitePage
     {
         private string _pageTitle;
         private Dictionary<string, IArcliteWebElement> _pageElements;
         private WebDriverWait _wait;
-        public ArcliteWebPage(WebDriverWait driverWait)
+        IActionsVisitor _visitor;
+        public ArcliteWebPage(WebDriverWait driverWait, IActionsVisitor visitor)
         {
             _wait = driverWait;
             _pageTitle = "defaultPage";
             _pageElements = new Dictionary<string, IArcliteWebElement>();
+            _visitor = visitor;
             this.setElements();
         }
 
@@ -30,20 +33,19 @@ namespace ExploreSelenium.ArcliteWebPages
         public string pageTitle { get => _pageTitle; set => _pageTitle = value; }
 
 
-        public Dictionary<string, IArcliteWebElement> pageElements { get => _pageElements; }
+        public Dictionary<string, IArcliteWebElement> pageElements { get => _pageElements; set => _pageElements = value; }
         public WebDriverWait wait { get => _wait; set => _wait = value; }
 
         public void setElements()
         {
-            Console.WriteLine("old");
-            IArcliteWebElement home = new ArcliteWebElement("Home", "//a/i[@class='fa fa-home arc-fa-2x']", ArcliteWebElementType.Button, _wait);
-            IArcliteWebElement orderTracking = new ArcliteWebElement("Order Tracking & Manangement", "//a[@id='arc-scheduler-sales']", ArcliteWebElementType.Button, _wait);
-            IArcliteWebElement scheduler = new ArcliteWebElement("Scheduler", "//a[@id='arc-scheduler-jobs']", ArcliteWebElementType.Button, _wait);
-            IArcliteWebElement workstation = new ArcliteWebElement("Workstation", "//a[@id='arc-workstation']", ArcliteWebElementType.Button, _wait);
-            IArcliteWebElement dashboard = new ArcliteWebElement("Dashboard", "//a[@id='arc-dashboard']", ArcliteWebElementType.Button, _wait);
-            IArcliteWebElement workflowBuilder = new ArcliteWebElement("Workflow Builder", "//a[@id='arc-workflow-builder']", ArcliteWebElementType.Button, _wait);
-            IArcliteWebElement settings = new ArcliteWebElement("Configuration", "//a[@id='arc-config']", ArcliteWebElementType.Button, _wait);
-            IArcliteWebElement user = new ArcliteWebElement("User Information", "//li[@class='nav-item dropdown']/a", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement home = new ArcliteButton("Home", "//a/i[@class='fa fa-home arc-fa-2x']", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement orderTracking = new ArcliteButton("Order Tracking & Manangement", "//a[@id='arc-scheduler-sales']", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement scheduler = new ArcliteButton("Scheduler", "//a[@id='arc-scheduler-jobs']", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement workstation = new ArcliteButton("Workstation", "//a[@id='arc-workstation']", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement dashboard = new ArcliteButton("Dashboard", "//a[@id='arc-dashboard']", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement workflowBuilder = new ArcliteButton("Workflow Builder", "//a[@id='arc-workflow-builder']", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement settings = new ArcliteButton("Configuration", "//a[@id='arc-config']", ArcliteWebElementType.Button, _wait);
+            IArcliteWebElement user = new ArcliteButton("User Information", "//li[@class='nav-item dropdown']/a", ArcliteWebElementType.Button, _wait);
             this._pageElements.Add(home.elementName, home);
             this._pageElements.Add(orderTracking.elementName, orderTracking);
             this._pageElements.Add(scheduler.elementName, scheduler);
@@ -53,6 +55,12 @@ namespace ExploreSelenium.ArcliteWebPages
             this._pageElements.Add(settings.elementName, settings);
             this._pageElements.Add(user.elementName, user);
 
+        }
+       
+
+        public void runTests()
+        {
+            
         }
     }
 

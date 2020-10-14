@@ -53,9 +53,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+        //    var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+      //      builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector(".float-right > .fa")).Click();
         driver.FindElement(By.CssSelector(".modal-footer:nth-child(5) > #btnSave")).Click();
@@ -65,9 +65,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+          //  var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+          //  builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector(".modal-footer:nth-child(5) .fas")).Click();
         driver.FindElement(By.Id("btnSave")).Click();
@@ -83,9 +83,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+         //   var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+         //   builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector("#addUpdateAssetType #btnSave")).Click();
         {
@@ -94,9 +94,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+         //   var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+        //    builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector("#addUpdateAssetType .fas")).Click();
         driver.FindElement(By.CssSelector(".row:nth-child(4) .col-md-1 .fa")).Click();
@@ -106,9 +106,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+       //     var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+       //     builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector(".modal-footer:nth-child(5) > #btnSave")).Click();
         {
@@ -117,9 +117,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
-            Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+        //    var element = driver.FindElement(By.tagName("body"));
+           Actions builder = new Actions(driver);
+       //     builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector(".modal-footer:nth-child(5) .fas")).Click();
         driver.FindElement(By.Id("btnSave")).Click();
@@ -129,9 +129,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+       //     var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+          //  builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector("#addEditAsset .fas")).Click();
         driver.SwitchTo().DefaultContent();
@@ -144,9 +144,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+        //    var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+         //   builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.Id("btnSave")).Click();
         driver.FindElement(By.CssSelector("#btnclose > .fas")).Click();
@@ -161,9 +161,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+        //    var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+          //  builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector("#btnclose > .fas")).Click();
         driver.SwitchTo().DefaultContent();
@@ -177,9 +177,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+//var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+         //   builder.MoveToElement(element, 0, 0).Perform();
         }
         {
             var element = driver.FindElement(By.Id("btnSaveCategory"));
@@ -187,9 +187,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+           // var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+          //  builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector("#btnSaveCategory > .fas")).Click();
         {
@@ -198,9 +198,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+         //   var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+        //    builder.MoveToElement(element, 0, 0).Perform();
         }
         {
             var element = driver.FindElement(By.CssSelector(".col-md-12 > .arc-btn-icon-red"));
@@ -208,9 +208,9 @@ public class ArclitesettingsTest
             builder.MoveToElement(element).Perform();
         }
         {
-            var element = driver.FindElement(By.tagName("body"));
+         //   var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+         //   builder.MoveToElement(element, 0, 0).Perform();
         }
         {
             var element = driver.FindElement(By.CssSelector(".col-md-12 > .arc-btn-icon-red > .fas"));
@@ -219,9 +219,9 @@ public class ArclitesettingsTest
         }
         driver.FindElement(By.CssSelector(".col-md-12 > .arc-btn-icon-red > .fas")).Click();
         {
-            var element = driver.FindElement(By.tagName("body"));
+        //    var element = driver.FindElement(By.tagName("body"));
             Actions builder = new Actions(driver);
-            builder.MoveToElement(element, 0, 0).Perform();
+        //    builder.MoveToElement(element, 0, 0).Perform();
         }
         driver.FindElement(By.CssSelector("#btnSaveChecklist > .fa")).Click();
         driver.FindElement(By.CssSelector(".fa-arrow-left")).Click();
