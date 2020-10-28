@@ -1,6 +1,6 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using ExploreSelenium.ArcliteWebElements;
-using ExploreSelenium.ArcliteWebPages.LoginPage;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -11,28 +11,27 @@ using System.Threading.Tasks;
 namespace ExploreSelenium.ArcliteWebPages
 {
     //the login page of Arclite
-    public class LoginPage : ArcliteWebPage
+    public class LoginPage : ArcliteWebPage, IArclitePage
     {
         public string _pageTitle;
         public Dictionary<string, IArcliteWebElement> _pageElements;
-        private WebDriverWait _wait;
         public LoginPageXAWE pageInfo;
-        IWebDriver _driver;
-        public LoginPage(WebDriverWait driverWait, IWebDriver driver) : base()
+        IActionsVisitor _visitor;
+        public LoginPage(IActionsVisitor visitor) : base()
         {
-            _pageElements = new Dictionary<string, IArcliteWebElement>();
+            base.pageTitle = "LoginPage";
+            _visitor = visitor;
             pageInfo = new LoginPageXAWE(this);
-            _pageTitle = "LoginPage";
-            _driver = driver;
-            
+            _pageElements = base.pageElements;
+
+
         }
 
-        new public void runTests()
+        new public void runTests(ArcliteTestAction action)
         {
-            IActionsVisitor visitor = new ArcliteActionVisitor(_wait, _driver);
-            _pageElements[pageInfo.username.Key].accept(visitor, "admin");
-            _pageElements[pageInfo.password.Key].accept(visitor, "admin");
-            _pageElements[pageInfo.signIn.Key].accept(visitor, "click");
+            _pageElements[pageInfo.username.Key].accept(_visitor, inputs.getInput(pageInfo.username.Key));
+            _pageElements[pageInfo.password.Key].accept(_visitor, inputs.getInput(pageInfo.password.Key));
+            _pageElements[pageInfo.signIn.Key].accept(_visitor, new InputVal());
         }
 
 

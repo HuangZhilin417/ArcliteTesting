@@ -15,8 +15,8 @@ namespace ExploreSelenium.ArcliteWebPages
         public DashboardPageXAWE(IArclitePage page)
         {
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
-            search = new KeyValuePair<string, IArcliteWebElement>("Search Dashboard", new ArcliteTextBox("Search Dashboard", "//input[@id='grid_DXSE_I']", ArcliteWebElementType.Textbox));
-            page.pageElements.Union(elementXpaths);
+            search = new KeyValuePair<string, IArcliteWebElement>("Search Dashboard", new ArcliteTextBox("Search Dashboard", "//input[@id='grid_DXSE_I']"));
+            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
 
 

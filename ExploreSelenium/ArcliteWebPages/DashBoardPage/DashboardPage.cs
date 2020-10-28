@@ -1,6 +1,5 @@
 ﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using ExploreSelenium.ArcliteWebElements;
-using ExploreSelenium.ArcliteWebPages.DashBoardPage;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -21,7 +20,7 @@ namespace ExploreSelenium.ArcliteWebPages
         public DashboardPage(WebDriverWait driverWait, IWebDriver driver)
         {
             pageInfo = new DashboardPageXAWE(this);
-            _pageTitle = "Dashboards";
+            base.pageTitle = "Dashboard";
             _driver = driver;
         }
 

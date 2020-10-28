@@ -1,4 +1,5 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -21,9 +22,9 @@ namespace ExploreSelenium.ArcliteWebElements
             _elementType = ArcliteWebElementType.Textbox;
         }
 
-        new public void accept(IActionsVisitor visitor, string wanted)
+        new public void accept(IActionsVisitor visitor, InputVal input)
         {
-            visitor.visitTextBox(this, wanted);
+            visitor.visitTextBox(this, input);
         }
     }
 }

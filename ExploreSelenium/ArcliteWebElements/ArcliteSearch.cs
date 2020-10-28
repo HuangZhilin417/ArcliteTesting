@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +20,11 @@ namespace ExploreSelenium.ArcliteWebElements
             _searchButtonXpath = searchButtonXpath;
             _searchInputXPath = base.elementXPath;
             _elementType = ArcliteWebElementType.Search;
+        }
+
+        new public void accept(IActionsVisitor visitor, InputVal input)
+        {
+            visitor.visitSearch(this, input);
         }
     }
 }

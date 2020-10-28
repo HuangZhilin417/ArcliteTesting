@@ -18,18 +18,27 @@ namespace ExploreSelenium.ArcliteWebPages
         public KeyValuePair<string, IArcliteWebElement> signIn;
         public LoginPageXAWE(IArclitePage page)
         {
-            
-            elementXpaths = new Dictionary<string, IArcliteWebElement>();
-            this.username = new KeyValuePair<string, IArcliteWebElement>("Username", new ArcliteTextBox("Username", "//input[@id='UserName']", ArcliteWebElementType.Textbox));
-            password = new KeyValuePair<string, IArcliteWebElement>("Password", new ArcliteTextBox("Password", "//input[@id='Password']", ArcliteWebElementType.Textbox));
-            signIn = new KeyValuePair<string, IArcliteWebElement>("Sign In", new ArcliteButton("Sign In", "//button[@id='btnlogin']", ArcliteWebElementType.Button));
+
+            this.initPage();
             this.setElementXpaths();
-            page.pageElements = elementXpaths;
+            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
+        }
+        public LoginPageXAWE()
+        {
+
+            this.initPage();
+           
         }
         //Dictionary<element name, XPath>
-       
+        private void initPage()
+        {
+            elementXpaths = new Dictionary<string, IArcliteWebElement>();
+            this.username = new KeyValuePair<string, IArcliteWebElement>("Username", new ArcliteTextBox("Username", "//input[@id='UserName']"));
+            password = new KeyValuePair<string, IArcliteWebElement>("Password", new ArcliteTextBox("Password", "//input[@id='Password']"));
+            signIn = new KeyValuePair<string, IArcliteWebElement>("Sign In", new ArcliteButton("Sign In", "//button[@id='btnlogin']"));
+        }
 
-        public void setElementXpaths()
+            public void setElementXpaths()
         {
             this.elementXpaths.Add(username.Key, username.Value);
             this.elementXpaths.Add(password.Key, password.Value);

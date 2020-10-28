@@ -1,7 +1,10 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using ExploreSelenium.ArcliteWebPages;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 namespace ExploreSelenium.ArcliteWebElements
 {
@@ -21,9 +24,11 @@ namespace ExploreSelenium.ArcliteWebElements
         public string elementXPath { get => _elementXPath; set => _elementXPath = value; }
         public ArcliteWebElementType elementType { get => _elementType; set => _elementType = value; }
 
-        public void accept(IActionsVisitor visitor, string wanted)
+
+            
+        public void accept(IActionsVisitor visitor, InputVal input)
         {
-            throw new System.Exception();
+            throw new System.NotImplementedException();
         }
     }
 }

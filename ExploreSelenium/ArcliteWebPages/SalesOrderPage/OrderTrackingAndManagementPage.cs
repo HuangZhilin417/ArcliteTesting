@@ -24,18 +24,13 @@ namespace ExploreSelenium.ArcliteWebPages
             _wait = driverWait;
             _pageElements = base.pageElements;
             pageInfo = new OrderTrackingAndManagementXAWE(this);
-            _pageTitle = "Order Tracking & Management";
+            base.pageTitle = "Order Tracking & Manangement";
             _driver = driver;
             _visitor = visitor;
 
         }
         new public void runTests()
         {
- 
-            pageElements[pageInfo.addSalesOrder.Key].accept(_visitor, "click");
-            pageElements[pageInfo.quotation.Key].accept(_visitor, "123456789");
-            pageElements[pageInfo.customer.Key].accept(_visitor, "Goods Manufacturer");
-            pageElements[pageInfo.order.Key].accept(_visitor, "945207352");
         }
     }
 }

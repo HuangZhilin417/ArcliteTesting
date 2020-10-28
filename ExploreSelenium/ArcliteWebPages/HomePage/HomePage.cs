@@ -10,21 +10,18 @@ using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages
 {
-    class HomePage : ArcliteWebPage
+    class HomePage : ArcliteWebPage, IArclitePage
     {
         public string _pageTitle;
         public Dictionary<string, IArcliteWebElement> _pageElements;
-        private WebDriverWait _wait;
         public HomePageXAWE pageInfo;
-        IWebDriver _driver;
-        public HomePage(WebDriverWait driverWait, IWebDriver driver) : base()
+        IActionsVisitor _visitor;
+        public HomePage(IActionsVisitor visitor) : base(visitor)
         {
+            base.pageTitle = "Home";
+            _visitor = visitor;
             pageInfo = new HomePageXAWE(this);
-            _pageTitle = "Home";
-            _driver = driver;
-        }
-        new public void setElements()
-        {
+            _pageElements = base.pageElements;
 
         }
 

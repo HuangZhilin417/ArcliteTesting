@@ -15,10 +15,9 @@ namespace ExploreSelenium.ArcliteWebPages
         private Dictionary<string, IArcliteWebElement> _pageElements;
         private WebDriverWait _wait;
         IActionsVisitor _visitor;
-        public WorkstationPage(WebDriverWait driverWait, IActionsVisitor visitor)
+        public WorkstationPage(IActionsVisitor visitor) : base(visitor)
         {
-            _wait = base.wait;
-            _pageTitle = "Workstation";
+            base.pageTitle = "Workstation";
             _pageElements = base.pageElements;
             _visitor = visitor;
             setElements();

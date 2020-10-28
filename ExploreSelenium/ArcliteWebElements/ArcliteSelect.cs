@@ -1,4 +1,5 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -15,7 +16,8 @@ namespace ExploreSelenium.ArcliteWebElements
         string _elementName;
         public string _dropDownXpath;
         public string _selectXPath;
-        IWebElement _element;
+        public string _optionFirst;
+        public string _optionSecond;
         ArcliteWebElementType _elementType;
   
         public ArcliteSelect(string name, string dropDownXpath,string selectXPath) : base(name, selectXPath)
@@ -23,13 +25,25 @@ namespace ExploreSelenium.ArcliteWebElements
             _elementName = base.elementName;
             _selectXPath = base.elementXPath;
             _dropDownXpath = dropDownXpath;
+            _optionFirst = null;
+            _optionSecond = null;
+            _elementType = ArcliteWebElementType.Select;
+        }
+        public ArcliteSelect(string name, string dropDownXpath, string selectXPath, string optionFirst, string optionSecond) : base(name, selectXPath)
+        {
+            _elementName = base.elementName;
+            _selectXPath = base.elementXPath;
+            _optionFirst = optionFirst;
+            _optionSecond = optionSecond;
+            _dropDownXpath = dropDownXpath;
             _elementType = ArcliteWebElementType.Select;
         }
 
 
-        new public void accept(IActionsVisitor visitor, string wanted) { 
-      
-            visitor.visitSelect(this, wanted);
+
+        new public void accept(IActionsVisitor visitor, InputVal input)
+        { 
+            visitor.visitSelect(this, input);
         }
     }
 }

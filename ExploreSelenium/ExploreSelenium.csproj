@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcliteInput\ArcliteInputValues.cs" />
+    <Compile Include="ArcliteInterfaces\IArcliteInputs.cs" />
     <Compile Include="ArcliteWebElementActionsVisitor\ArcliteActionVisitor.cs" />
     <Compile Include="ArcliteInterfaces\IActionsVisitor.cs" />
     <Compile Include="ArcliteWebElements\ArcliteButton.cs" />
@@ -61,24 +63,54 @@
     <Compile Include="ArcliteWebElements\ArcliteTextBox.cs" />
     <Compile Include="ArcliteWebElements\ArcliteWebElement.cs" />
     <Compile Include="ArcliteInterfaces\IArcliteWebElement.cs" />
-    <Compile Include="ArcliteWebPages\ArcliteWebPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Assets\AssetsPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Assets\AssetsXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Checklists\ChecklistsPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Checklists\CheckListsXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\ConfigurationsPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\ConfigurationXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Customers\CustomersPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Customers\CustomersXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Personnel\PersonnelPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Personnel\PersonnelXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\AssetTypeManager\AssetTypeManagerPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\AssetTypeManager\AssetTypeManagerXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\Currency\CurrencyPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\Currency\CurrencyXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\InventoryItemType\InventoryItemTypePage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\InventoryItemType\InventoryItemTypeXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\LocationManager\LocationManagerPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\LocationManager\LocationManagerXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\Qualification\QualificationPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\Qualification\QualificationXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\SettingsPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\SettingsXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\Unit\UnitPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Settings\Unit\UnitXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Suppliers\SuppliersPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Suppliers\SuppliersXAWE.cs" />
+    <Compile Include="ArcliteWebPages\DefaultPage\ArcliteWebPage.cs" />
     <Compile Include="ArcliteWebPages\CurrentPage.cs" />
     <Compile Include="ArcliteWebPages\DashBoardPage\DashboardPage.cs" />
     <Compile Include="ArcliteWebPages\DashBoardPage\DashboardPageXAWE.cs" />
+    <Compile Include="ArcliteWebPages\DefaultPage\ArcliteWebPageXAWE.cs" />
     <Compile Include="ArcliteWebPages\HomePage\HomePage.cs" />
     <Compile Include="ArcliteInterfaces\IArclitePage.cs" />
     <Compile Include="ArcliteWebPages\HomePage\HomePageXAWE.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Inventory\InventoryPage.cs" />
+    <Compile Include="ArcliteWebPages\ConfigurationWebPage\Inventory\InventoryXAWE.cs" />
     <Compile Include="ArcliteWebPages\LoginWebPage\LoginPage.cs" />
     <Compile Include="ArcliteWebPages\LoginWebPage\LoginPageXAWE.cs" />
     <Compile Include="ArcliteWebPages\SalesOrderPage\OrderTrackingAndManagementPage.cs" />
     <Compile Include="ArcliteWebPages\SalesOrderPage\OrderTrackingAndManagementXAWE.cs" />
-    <Compile Include="ArcliteWebPages\SchedulerPage.cs" />
+    <Compile Include="ArcliteWebPages\SchedulerPage\SchedulerPage.cs" />
+    <Compile Include="ArcliteWebPages\SchedulerPage\SchedulerPageXAWE.cs" />
     <Compile Include="ArcliteWebPages\WorkstationPage.cs" />
     <Compile Include="ArcliteInterfaces\IArcliteData.cs" />
     <Compile Include="ArcliteInterfaces\IArcliteDataVisitor.cs" />
     <Compile Include="BaseClass\BaseTest.cs" />
-    <Compile Include="AddingBasicEntries.cs" />
-    <Compile Include="AddSalesOrderAndPush.cs" />
+    <Compile Include="Testing\AddingBasicEntries.cs" />
+    <Compile Include="Testing\AddSalesOrderAndPush.cs" />
     <Compile Include="Class2.cs" />
     <Compile Include="SettingsAuto.cs" />
     <Compile Include="Util.cs" />
@@ -86,9 +118,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ArcliteInputs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

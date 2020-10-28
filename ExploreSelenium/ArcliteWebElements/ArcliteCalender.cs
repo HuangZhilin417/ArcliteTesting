@@ -1,4 +1,5 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -14,23 +15,23 @@ namespace ExploreSelenium.ArcliteWebElements
     {
         string _elementName;
         string _elementXPath;
+        public string _nextMonthXpath;
+        public string _firstDateXpath;
         IWebElement _element;
         ArcliteWebElementType _elementType;
-        public ArcliteCalender(string name, string xPath, ArcliteWebElementType type, WebDriverWait wait) : base(name, xPath, type, wait)
-        {
-            
-        }
 
-        public ArcliteCalender(string name, string xPath, string nextMonthXpath, string firstDateXpath) : base()
+        public ArcliteCalender(string name, string xPath, string nextMonthXpath, string firstDateXpath) : base(name, xPath)
         {
             _elementType = ArcliteWebElementType.Calender;
             _elementName = base.elementName;
             _elementXPath = base.elementXPath;
+            _nextMonthXpath = nextMonthXpath;
+            _firstDateXpath = firstDateXpath;
         }
 
-        new public void accept(IActionsVisitor visitor, string wanted)
+        new public void accept(IActionsVisitor visitor, InputVal input)
         {
-            visitor.visitCalender(this, wanted);
+            visitor.visitCalender(this, input);
         }
     }
 }

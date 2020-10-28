@@ -1,4 +1,5 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -18,13 +19,14 @@ namespace ExploreSelenium.ArcliteWebElements
         Search
 
         }
+
     // repersents each interactive web element in Arclite
     public interface IArcliteWebElement
     {
         string elementName { get; set; }
         string elementXPath { get; set; }
         ArcliteWebElementType elementType{get; set;}
-        void accept(IActionsVisitor visitor, String wanted);
+        void accept(IActionsVisitor visitor, InputVal input);
 
     }
 }

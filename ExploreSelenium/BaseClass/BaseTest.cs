@@ -18,7 +18,6 @@ namespace ExploreSelenium.BaseCkass
 {
     public class BaseTest 
     {
-        public CurrentPage currentPage;
         public IWebDriver driver;
         private String ArcliteUsername = "admin";
         public IActionsVisitor visitor;
@@ -42,13 +41,14 @@ namespace ExploreSelenium.BaseCkass
             driver.Manage().Window.Maximize();
             
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            IArclitePage login = new LoginPage(wait, driver);
-            login.runTests();
-            currentPage = new CurrentPage(login, wait, visitor);
+            visitor = new ArcliteActionVisitor(wait, driver);
+            IArclitePage login = new LoginPage(visitor);
+            login.runTests(ArcliteTestAction.login);
+          /*  currentPage = new CurrentPage(login, wait, visitor);
 
             currentPage.pageElements["Username"].accept(visitor, ArcliteUsername);
             currentPage.pageElements["Password"].accept(visitor, ArclitePassword);
-            currentPage.pageElements["Sign In"].accept(visitor, "");
+            currentPage.pageElements["Sign In"].accept(visitor, "");*/
             /*      IWebElement Username = currentPage.pageElements["Username"].webElement;
                   Username.SendKeys(ArcliteUsername);
                   IWebElement Password = currentPage.pageElements["Password"].webElement;

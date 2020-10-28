@@ -22,23 +22,42 @@ using ExpectedConditions = OpenQA.Selenium.Support.UI.ExpectedConditions;
 using System.CodeDom.Compiler;
 using NUnit.Framework.Internal.Commands;
 using Microsoft.Win32;
+using ExploreSelenium.ArcliteWebPages;
+using ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Personnel;
+using ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Assets;
+using ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Customers;
+using ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Suppliers;
+using ExploreSelenium.ArcliteWebPages.ConfigurationWebPage;
 
 namespace ExploreSelenium
 {
     [TestFixture]
     public class AddingBasicEntries : BaseTest
     {
+
+        [Test, Category("addSecond"), OrderAttribute(2)]
+        public void testingNavigate()
+        {
+            IArclitePage suppliersPage = new SuppliersPage(visitor);
+            suppliersPage.runTests(ArcliteTestAction.add);
+        }
+
         [Test, Category("addSecond"), OrderAttribute(2)]
         public void addingInventory()
         {
-            //clicks the gear button
+            IArclitePage inventory = new InventoryPage(visitor);
+            inventory.runTests(ArcliteTestAction.add);
+
+           /* //clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
+
+            
 
             //clicks on inventory
             IWebElement inventory = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='inventory']")));
             inventory.Click();
-            
+
             //switch frame
             wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt("mainFrame"));
 
@@ -90,13 +109,15 @@ namespace ExploreSelenium
 
             //clicks save inventory item button
             IWebElement saveInventory = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='btnSave'][@onclick='SaveUpdateItem(0)']")));
-            saveInventory.Click();
+            saveInventory.Click();*/
         }
 
         [Test, Category("deleteFirst"), OrderAttribute(4)]
         public void deletingInventory ()
         {
-            //clicks the gear button
+            IArclitePage inventory = new InventoryPage(visitor);
+            inventory.runTests(ArcliteTestAction.delete);
+            /*//clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
 
@@ -121,13 +142,16 @@ namespace ExploreSelenium
 
             //click confirm delete button
             IWebElement confirmButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='DeleteInventoryItem()']")));
-            confirmButton.Click();
+            confirmButton.Click();*/
         }
 
         [Test, Category("addSecond"), OrderAttribute(2)]
         public void addingPersonnelManager()
         {
-            //clicks the gear button
+            IArclitePage personnelPage = new PersonnelPage(visitor);
+            personnelPage.runTests(ArcliteTestAction.add);
+
+         /*   //clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
 
@@ -209,11 +233,14 @@ namespace ExploreSelenium
 
             //clicks save personnel button
             IWebElement savePersonnel = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='btnSave'][@onclick='SaveUpdatePersonnel(0)']")));
-            savePersonnel.Click();
+            savePersonnel.Click();*/
         }
         [Test, Category("deleteFirst"), OrderAttribute(4)]
         public void disablePersonnel()
         {
+            IArclitePage personnelPage = new PersonnelPage(visitor);
+            personnelPage.runTests(ArcliteTestAction.delete);
+/*
             //clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
@@ -231,14 +258,17 @@ namespace ExploreSelenium
 
             //click confirm delete button
             IWebElement confirmButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='DeletePersonnel()']")));
-            confirmButton.Click();
+            confirmButton.Click();*/
         }
 
 
-        [Test, Category("addSecond"), OrderAttribute(2)]
+            [Test, Category("addSecond"), OrderAttribute(2)]
         public void addingAssets()
         {
-            //clicks the gear button
+            IArclitePage assetsPage = new AssetsPage(visitor);
+            assetsPage.runTests(ArcliteTestAction.add);
+
+            /*//clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
 
@@ -312,13 +342,16 @@ namespace ExploreSelenium
             //clicks save personnel button
             IWebElement saveAsset = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='btnSave'][@onclick='SaveUpdateAsset(0)']")));
             saveAsset.Click();
-
+*/
         }
 
         [Test, Category("deleteFirst"), OrderAttribute(4)]
         public void deletingAsset()
         {
-            //clicks the gear button
+            IArclitePage assetsPage = new AssetsPage(visitor);
+            assetsPage.runTests(ArcliteTestAction.delete);
+
+            /*//clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
 
@@ -339,14 +372,17 @@ namespace ExploreSelenium
 
             //click confirm delete button
             IWebElement confirmButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='DeleteAsset()']")));
-            confirmButton.Click();
+            confirmButton.Click();*/
         }
 
 
         [Test, Category("addSecond"), OrderAttribute(2)]
         public void addingCustomer()
         {
-            //clicks the gear button
+            IArclitePage customerPage = new CustomersPage(visitor);
+            customerPage.runTests(ArcliteTestAction.add);
+
+           /* //clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
 
@@ -417,13 +453,15 @@ namespace ExploreSelenium
 
             //clicks save personnel button
             IWebElement saveCustomer = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='btnSave'][@onclick='SaveUpdateCustomer(0)']")));
-            saveCustomer.Click();
+            saveCustomer.Click();*/
         }
 
         [Test, Category("deleteFirst"), OrderAttribute(4)]
         public void deletingCustomer()
         {
-            //clicks the gear button
+            IArclitePage customerPage = new CustomersPage(visitor);
+            customerPage.runTests(ArcliteTestAction.delete);
+          /*  //clicks the gear button
             IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
             gear.Click();
 
@@ -445,140 +483,121 @@ namespace ExploreSelenium
 
             //click confirm delete button
             IWebElement confirmButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='DeleteCustomer()']")));
-            confirmButton.Click();
-        }
-
-        private void retryClick(IWebElement button)
-        {
-            int attempt = 0;
-            bool result = false;
-            while(attempt < 2)
-            {
-                try
-                {
-                    button.Click();
-                    result = true;
-                    break;
-                }
-                catch (OpenQA.Selenium.StaleElementReferenceException e)
-                {
-                    result = false;
-                }
-                attempt++;
-            }
-            if (result)
-            {
-                throw new StaleElementReferenceException();
-            }
+            confirmButton.Click();*/
         }
 
         [Test, Category("addSecond"), OrderAttribute(2)]
         public void addingSupplier()
         {
-            //clicks the gear button
-            IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
-            gear.Click();
 
-            //clicks on Customer
-            IWebElement supplier = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='supplier']")));
-            supplier.Click();
+            IArclitePage suppliersPage = new SuppliersPage(visitor);
+            suppliersPage.runTests(ArcliteTestAction.add);
+            /*  //clicks the gear button
+              IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
+              gear.Click();
 
-            //switch frame
-            wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt("mainFrame"));
+              //clicks on Customer
+              IWebElement supplier = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='supplier']")));
+              supplier.Click();
 
-            //click add Customer
-            IWebElement addCustomer = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='AddEditSupplier(0)']")));
-            driver.ExecuteJavaScript("arguments[0].click();", addCustomer);
+              //switch frame
+              wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt("mainFrame"));
 
-            //enter value for name
-            IWebElement name = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='txtNameSupplier']")));
-            name.Clear();
-            name.SendKeys("Caleb Furnas");
+              //click add Customer
+              IWebElement addCustomer = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='AddEditSupplier(0)']")));
+              driver.ExecuteJavaScript("arguments[0].click();", addCustomer);
 
-            //enter value for supplier code
-            IWebElement supplierCode = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='SupplierCode']")));
-            supplierCode.Clear();
-            supplierCode.SendKeys("9452");
+              //enter value for name
+              IWebElement name = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='txtNameSupplier']")));
+              name.Clear();
+              name.SendKeys("Caleb Furnas");
 
-            //enter value for contact name
-            IWebElement contactName = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactName']")));
-            contactName.Clear();
-            contactName.SendKeys("Caleb");
+              //enter value for supplier code
+              IWebElement supplierCode = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='SupplierCode']")));
+              supplierCode.Clear();
+              supplierCode.SendKeys("9452");
 
-            //enter value for contact number
-            IWebElement contactNumber = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactNumberPrimary']")));
-            contactNumber.Clear();
-            contactNumber.SendKeys("+1520520");
+              //enter value for contact name
+              IWebElement contactName = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactName']")));
+              contactName.Clear();
+              contactName.SendKeys("Caleb");
 
-
-            //enter value for secondary number
-            IWebElement secondaryNumber = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactNumberSecondary']")));
-            secondaryNumber.Clear();
-            secondaryNumber.SendKeys("+114141414");
+              //enter value for contact number
+              IWebElement contactNumber = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactNumberPrimary']")));
+              contactNumber.Clear();
+              contactNumber.SendKeys("+1520520");
 
 
-            //enter value for email
-            IWebElement email = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactEmail']")));
-            email.Clear();
-            email.SendKeys("calebFurnas@gmail.com");
-
-            //enter value for address
-            IWebElement address = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='Address']")));
-            address.Clear();
-            address.SendKeys("chrome");
+              //enter value for secondary number
+              IWebElement secondaryNumber = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactNumberSecondary']")));
+              secondaryNumber.Clear();
+              secondaryNumber.SendKeys("+114141414");
 
 
-            //enter value for notes
-            IWebElement notes = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='Notes']")));
-            notes.Clear();
-            notes.SendKeys("never regret");
+              //enter value for email
+              IWebElement email = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='ContactEmail']")));
+              email.Clear();
+              email.SendKeys("calebFurnas@gmail.com");
 
-            //clicks person in charge dropdown
-            IWebElement personInChargeDropDown = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//label[@class='control-label'][text()='Person In Charge']/parent::div/div")));
-            personInChargeDropDown.Click();
+              //enter value for address
+              IWebElement address = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='Address']")));
+              address.Clear();
+              address.SendKeys("chrome");
 
-            //get the options as a select element 
-            SelectElement selectPersonInChargeElement = new SelectElement(driver.FindElement(By.XPath("//select[@id='ddlPersonInCharge']")));
 
-            //select the wanted option
-            IWebElement selectedPersonInChargeOption = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//label[@class='control-label'][text()='Person In Charge']/parent::div/div/div/div/div/div[@data-value = '" + Util.getDataValue("Josh Huang", selectPersonInChargeElement) + "']")));
-            selectedPersonInChargeOption.Click();
+              //enter value for notes
+              IWebElement notes = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='Notes']")));
+              notes.Clear();
+              notes.SendKeys("never regret");
 
-            //enter value for notes
-            IWebElement description = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='Description']")));
-            description.Clear();
-            description.SendKeys("my best friend");
+              //clicks person in charge dropdown
+              IWebElement personInChargeDropDown = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//label[@class='control-label'][text()='Person In Charge']/parent::div/div")));
+              personInChargeDropDown.Click();
 
-            //clicks save personnel button
-            IWebElement saveCustomer = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='btnSave'][@onclick='SaveUpdateSupplier(0)']")));
-            saveCustomer.Click();
+              //get the options as a select element 
+              SelectElement selectPersonInChargeElement = new SelectElement(driver.FindElement(By.XPath("//select[@id='ddlPersonInCharge']")));
+
+              //select the wanted option
+              IWebElement selectedPersonInChargeOption = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//label[@class='control-label'][text()='Person In Charge']/parent::div/div/div/div/div/div[@data-value = '" + Util.getDataValue("Josh Huang", selectPersonInChargeElement) + "']")));
+              selectedPersonInChargeOption.Click();
+
+              //enter value for notes
+              IWebElement description = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='Description']")));
+              description.Clear();
+              description.SendKeys("my best friend");
+
+              //clicks save personnel button
+              IWebElement saveCustomer = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id='btnSave'][@onclick='SaveUpdateSupplier(0)']")));
+              saveCustomer.Click();*/
         }
 
         [Test, Category("deleteFirst"), OrderAttribute(4)]
         public void deletingSupplier()
         {
-            //clicks the gear button
-            IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
-            gear.Click();
+            IArclitePage suppliersPage = new SuppliersPage(visitor);
+            suppliersPage.runTests(ArcliteTestAction.delete);
+            /*  //clicks the gear button
+              IWebElement gear = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//i[@class='fa fa-cog arc-fa-2x']")));
+              gear.Click();
 
-            //clicks on supplier
-            IWebElement supplier = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='supplier']")));
-            supplier.Click();
+              //clicks on supplier
+              IWebElement supplier = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='supplier']")));
+              supplier.Click();
 
-            //switch frame
-            wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt("mainFrame"));
+              //switch frame
+              wait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt("mainFrame"));
 
-            //search for item
-            IWebElement search = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@id='tbSupplier_filter']/label")));
-            search.SendKeys("Caleb Furnas");
+              //search for item
+              IWebElement search = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@id='tbSupplier_filter']/label")));
+              search.SendKeys("Caleb Furnas");
 
-            //click delete button
-            IWebElement deleteButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//tr[@role='row']/td[text()='Caleb Furnas']/parent::tr/td/a/i")));
-            deleteButton.Click();
+              //click delete button
+              IWebElement deleteButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//tr[@role='row']/td[text()='Caleb Furnas']/parent::tr/td/a/i")));
+              deleteButton.Click();
 
-            //click confirm delete button
-            IWebElement confirmButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='DeleteSupplier()']")));
-            confirmButton.Click();
+              //click confirm delete button
+              IWebElement confirmButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@onclick='DeleteSupplier()']")));
+              confirmButton.Click();*/
         }
 
 

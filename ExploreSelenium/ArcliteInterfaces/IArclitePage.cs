@@ -8,6 +8,15 @@ using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages
 {
+
+    public enum ArcliteTestAction
+    {
+        add,
+        delete,
+        check,
+        login,
+        approve
+    }
     public interface IArclitePage
     {
         //unique page title for every page
@@ -16,10 +25,7 @@ namespace ExploreSelenium.ArcliteWebPages
         //contains the key (name of the web element or the page title it leads to)
         Dictionary<string, IArcliteWebElement> pageElements { get; set; }
 
-        //web driver wait
-        WebDriverWait wait { get; set; }
-
         //run tests for current page
-        void runTests();
+        void runTests(ArcliteTestAction action);
     }
 }

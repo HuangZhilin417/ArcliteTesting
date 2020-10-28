@@ -32,15 +32,18 @@ namespace ExploreSelenium.ArcliteWebPages.SalesOrderPage
 
         public KeyValuePair<string, IArcliteWebElement> jobDone;
         public KeyValuePair<string, IArcliteWebElement> jobCancel;
-        public KeyValuePair<string, IArcliteWebElement> checkListSearch;
         public KeyValuePair<string, IArcliteWebElement> checkListTable;
         public KeyValuePair<string, IArcliteWebElement> checkListDone;
 
         public KeyValuePair<string, IArcliteWebElement> checkListCancel;
         public KeyValuePair<string, IArcliteWebElement> submit;
         public KeyValuePair<string, IArcliteWebElement> saveDraft;
+        public KeyValuePair<string, IArcliteWebElement> checklistSearch;
+
         public OrderTrackingAndManagementXAWE(IArclitePage page)
         {
+            IArcliteWebElement confirmDelete = new ArcliteButton("Checklist Category Confirm Delete", "//a[@onclick='DeleteSupplier()']");
+            IArcliteWebElement cancelDelete = new ArcliteButton("Checklist Category Cancel Delete", "//a[@onclick='DeleteSupplier()']/parent::div/a/i[@class='fas fa-times-circle arc-fa-2x']");
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
 
             addSalesOrder = new KeyValuePair<string, IArcliteWebElement>("New Sales Order", new ArcliteButton("New Sales Order", "//a[@id='add_sales_order']"));
@@ -62,11 +65,10 @@ namespace ExploreSelenium.ArcliteWebPages.SalesOrderPage
             jobDone = new KeyValuePair<string, IArcliteWebElement>("Job Done", new ArcliteButton("Job Done", "//a[@id='add-wo']"));
             jobCancel = new KeyValuePair<string, IArcliteWebElement>("Job Cancel", new ArcliteButton("Job Cancel", "//a[@onclick='closeNav()']"));
 
-
-            checkListSearch = new KeyValuePair<string, IArcliteWebElement>("Checklist Search", new ArcliteTextBox("Checklist Search", "//div[@id='tblChecklists_filter']/label/input"));
             addChecklist = new KeyValuePair<string, IArcliteWebElement>("Add Checklist", new ArcliteButton("Add Checklist", "//a[@onclick='GetChecklists(false)']"));
-            checkListTable = new KeyValuePair<string, IArcliteWebElement>("Checklist Table", new ArcliteDataTable("Checklist Table", "//div[@id='tblChecklists_filter']/label/input",
-                "//table[@id='tblChecklists']/tbody/tr/td/span[text()='", "']/parent::td/parent::tr/td/div/label"));
+            checklistSearch = new KeyValuePair<string, IArcliteWebElement>("CheckList Search", new ArcliteSearch("CheckList Search", "//div[@id='tblChecklists_filter']/label/input", null));
+            checkListTable = new KeyValuePair<string, IArcliteWebElement>("Checklist Table", new ArcliteDataTable("Checklist Table", new ArcliteSearch("CheckList Search", "//div[@id='tblChecklists_filter']/label/input", null), 
+                "//table[@id='tblChecklists']/tbody/tr/td/span[text()='", "']", "/parent::td/parent::tr/td/div/label", null, null));
             checkListDone = new KeyValuePair<string, IArcliteWebElement>("Checklist Done", new ArcliteButton("Checklist Done", "//a[@id='btnAddChecklists']"));
             checkListCancel = new KeyValuePair<string, IArcliteWebElement>("Checklist Cancel", new ArcliteButton("Checklist Cancel", "//div[@id='checklistMdl']/div/div/div/a[@id='close_sch_job_display_setting_close']"));
 
@@ -76,7 +78,7 @@ namespace ExploreSelenium.ArcliteWebPages.SalesOrderPage
 
 
             this.setElementXpaths();
-            page.pageElements = this.elementXpaths;
+            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
         public void setElementXpaths()
         {
@@ -98,7 +100,6 @@ namespace ExploreSelenium.ArcliteWebPages.SalesOrderPage
             elementXpaths.Add(jobDone.Key, jobDone.Value);
             elementXpaths.Add(jobCancel.Key, jobCancel.Value);
 
-            elementXpaths.Add(checkListSearch.Key, checkListSearch.Value);
             elementXpaths.Add(addChecklist.Key, addChecklist.Value);
             elementXpaths.Add(checkListTable.Key, checkListTable.Value);
             elementXpaths.Add(checkListDone.Key, checkListDone.Value);
@@ -107,6 +108,7 @@ namespace ExploreSelenium.ArcliteWebPages.SalesOrderPage
             elementXpaths.Add(submit.Key, submit.Value);
             elementXpaths.Add(saveDraft.Key, saveDraft.Value);
             elementXpaths.Add(search.Key, search.Value);
+            elementXpaths.Add(checklistSearch.Key, checklistSearch.Value);
 
         }
     }

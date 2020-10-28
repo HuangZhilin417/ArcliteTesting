@@ -27,11 +27,7 @@ namespace ExploreSelenium
         [Test, OrderAttribute(3), Category("addThird")]
         public void addSalesOrder()
         {
-            currentPage.changePage(new HomePage(wait, visitor));
-
-
-
-
+         
             //clicks the add sales order button
             IWebElement trackingOrderAndManagement = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[@id='arc-scheduler-sales']")));
             driver.ExecuteJavaScript("arguments[0].click();", trackingOrderAndManagement);
