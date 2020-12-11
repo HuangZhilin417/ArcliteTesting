@@ -55,8 +55,10 @@
     <Compile Include="ArcliteInterfaces\IArcliteInputs.cs" />
     <Compile Include="ArcliteWebElementActionsVisitor\ArcliteActionVisitor.cs" />
     <Compile Include="ArcliteInterfaces\IActionsVisitor.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteAttachment.cs" />
     <Compile Include="ArcliteWebElements\ArcliteButton.cs" />
     <Compile Include="ArcliteWebElements\ArcliteCalender.cs" />
+    <Compile Include="ArcliteWebElements\ArcliteCanvas.cs" />
     <Compile Include="ArcliteWebElements\ArcliteDataTable.cs" />
     <Compile Include="ArcliteWebElements\ArcliteSearch.cs" />
     <Compile Include="ArcliteWebElements\ArcliteSelect.cs" />
@@ -90,7 +92,6 @@
     <Compile Include="ArcliteWebPages\ConfigurationWebPage\Suppliers\SuppliersPage.cs" />
     <Compile Include="ArcliteWebPages\ConfigurationWebPage\Suppliers\SuppliersXAWE.cs" />
     <Compile Include="ArcliteWebPages\DefaultPage\ArcliteWebPage.cs" />
-    <Compile Include="ArcliteWebPages\CurrentPage.cs" />
     <Compile Include="ArcliteWebPages\DashBoardPage\DashboardPage.cs" />
     <Compile Include="ArcliteWebPages\DashBoardPage\DashboardPageXAWE.cs" />
     <Compile Include="ArcliteWebPages\DefaultPage\ArcliteWebPageXAWE.cs" />
@@ -105,20 +106,18 @@
     <Compile Include="ArcliteWebPages\SalesOrderPage\OrderTrackingAndManagementXAWE.cs" />
     <Compile Include="ArcliteWebPages\SchedulerPage\SchedulerPage.cs" />
     <Compile Include="ArcliteWebPages\SchedulerPage\SchedulerPageXAWE.cs" />
-    <Compile Include="ArcliteWebPages\WorkstationPage.cs" />
+    <Compile Include="ArcliteWebPages\Workflow Builder\WorkflowBuilderPage.cs" />
+    <Compile Include="ArcliteWebPages\Workflow Builder\WorkflowBuilderXAWE.cs" />
+    <Compile Include="ArcliteWebPages\Workstation\WorkstationPage.cs" />
     <Compile Include="ArcliteInterfaces\IArcliteData.cs" />
-    <Compile Include="ArcliteInterfaces\IArcliteDataVisitor.cs" />
+    <Compile Include="ArcliteWebPages\Workstation\WorkstationXAWE.cs" />
     <Compile Include="BaseClass\BaseTest.cs" />
     <Compile Include="Testing\AddingBasicEntries.cs" />
-    <Compile Include="Testing\AddSalesOrderAndPush.cs" />
-    <Compile Include="Class2.cs" />
-    <Compile Include="SettingsAuto.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

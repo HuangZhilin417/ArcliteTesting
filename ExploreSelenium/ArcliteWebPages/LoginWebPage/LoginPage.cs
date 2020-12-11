@@ -1,31 +1,37 @@
 ﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteInterfaces;
 using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using ExploreSelenium.ArcliteWebElements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace ExploreSelenium.ArcliteWebPages
 {
-    //the login page of Arclite
+    /*
+    * Repersents the Login Page on ArcLite
+    */
+
     public class LoginPage : ArcliteWebPage, IArclitePage
     {
         public string _pageTitle;
         public Dictionary<string, IArcliteWebElement> _pageElements;
         public LoginPageXAWE pageInfo;
-        IActionsVisitor _visitor;
-        public LoginPage(IActionsVisitor visitor) : base()
+        private IActionsVisitor _visitor;
+
+        /*
+         * Creates a Login page and initializes page title and all of this page's Xpath
+         */
+
+        public LoginPage(IActionsVisitor visitor, IArcliteInputs inputs) : base(visitor, inputs)
         {
             base.pageTitle = "LoginPage";
             _visitor = visitor;
             pageInfo = new LoginPageXAWE(this);
             _pageElements = base.pageElements;
-
-
         }
+
+        /*
+         * runs the test for Login Page, which only logs in to arclite
+         */
 
         new public void runTests(ArcliteTestAction action)
         {
@@ -33,7 +39,5 @@ namespace ExploreSelenium.ArcliteWebPages
             _pageElements[pageInfo.password.Key].accept(_visitor, inputs.getInput(pageInfo.password.Key));
             _pageElements[pageInfo.signIn.Key].accept(_visitor, new InputVal());
         }
-
-
     }
 }

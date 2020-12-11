@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.AssetTypeManager
 {
@@ -23,6 +20,21 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.AssetTyp
 
         public AssetTypeManagerXAWE(IArclitePage page)
         {
+            this.initPage();
+            this.setElementXpaths();
+            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
+        }
+
+        //Dictionary<element name, XPath>
+
+        public AssetTypeManagerXAWE()
+        {
+            this.initPage();
+        }
+
+        //Dictionary<element name, XPath>
+        private void initPage()
+        {
             IArcliteWebElement confirmDelete = new ArcliteButton("Checklist Category Confirm Delete", "//a[@onclick='DeleteAssetType()']");
             IArcliteWebElement cancelDelete = new ArcliteButton("Checklist Category Cancel Delete", "//a[@onclick='DeleteAssetType()']/parent::div/a/i[@class='fas fa-times-circle arc-fa-2x']");
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
@@ -32,15 +44,10 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.AssetTyp
             add = new KeyValuePair<string, IArcliteWebElement>("Asset Type Manager Add", new ArcliteButton("Asset Type Manager Add", "//a[@onclick='AddEditAssetType(0,0)']"));
             name = new KeyValuePair<string, IArcliteWebElement>("Asset Type Manager Name", new ArcliteTextBox("Asset Type Manager Name", "//input[@id='AssetTypeName']"));
             description = new KeyValuePair<string, IArcliteWebElement>("Asset Type Manager Description", new ArcliteTextBox("Asset Type Manager Description", "//textarea[@id='AssetTypeDescription']"));
-            
+
             save = new KeyValuePair<string, IArcliteWebElement>("Asset Type Manager Save", new ArcliteButton("Asset Type Manager Save", "//button[@onclick='SaveUpdateAssetType(0)']"));
             cancel = new KeyValuePair<string, IArcliteWebElement>("Asset Type Manager Cancel", new ArcliteButton("Asset Type Manager Cancel", "//button[@id='btnclose']"));
-
-            this.setElementXpaths();
-            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
-        //Dictionary<element name, XPath>
-
 
         public void setElementXpaths()
         {

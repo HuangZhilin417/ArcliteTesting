@@ -1,14 +1,11 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings
 {
-    class SettingsXAWE : IArcliteData
+    public class SettingsXAWE : IArcliteData
     {
         public Dictionary<string, IArcliteWebElement> elementXpaths;
 
@@ -26,7 +23,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings
 
         public SettingsXAWE(IArclitePage page)
         {
-
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
 
             customFields = new KeyValuePair<string, IArcliteWebElement>("Setting Custom Fields", new ArcliteButton("Setting Custom Fields", "//a[@data-settings='customfield']"));
@@ -44,8 +40,8 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings
             this.setElementXpaths();
             this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
-        //Dictionary<element name, XPath>
 
+        //Dictionary<element name, XPath>
 
         public void setElementXpaths()
         {

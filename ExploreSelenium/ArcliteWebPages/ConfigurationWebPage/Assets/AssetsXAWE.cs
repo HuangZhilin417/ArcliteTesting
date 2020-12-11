@@ -1,11 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Assets
 {
@@ -82,7 +78,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Assets
             this.elementXpaths.Add(trackOEE.Key, trackOEE.Value);
             this.elementXpaths.Add(save.Key, save.Value);
             this.elementXpaths.Add(cancel.Key, cancel.Value);
-
         }
     }
 }

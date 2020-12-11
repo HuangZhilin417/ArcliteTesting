@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Unit
 {
@@ -23,6 +20,22 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Unit
 
         public UnitXAWE(IArclitePage page)
         {
+            this.initPage();
+
+            this.setElementXpaths();
+            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
+        }
+
+        //Dictionary<element name, XPath>
+
+        public UnitXAWE()
+        {
+            this.initPage();
+        }
+
+        //Dictionary<element name, XPath>
+        private void initPage()
+        {
             IArcliteWebElement confirmDelete = new ArcliteButton("Checklist Category Confirm Delete", "//a[@onclick='DeleteUOM()']");
             IArcliteWebElement cancelDelete = new ArcliteButton("Checklist Category Cancel Delete", "//a[@onclick='DeleteUOM()']/parent::div/a/i[@class='fas fa-times-circle arc-fa-2x']");
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
@@ -35,12 +48,7 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Unit
 
             save = new KeyValuePair<string, IArcliteWebElement>("Unit Save", new ArcliteButton("Unit Save", "//button[@id='btnSave'][@onclick='SaveUpdateUOM(0)']"));
             cancel = new KeyValuePair<string, IArcliteWebElement>("Unit Cancel", new ArcliteButton("Unit Cancel", "//button[@id='btnclose']"));
-
-            this.setElementXpaths();
-            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
-        //Dictionary<element name, XPath>
-
 
         public void setElementXpaths()
         {
@@ -55,4 +63,3 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Unit
         }
     }
 }
-

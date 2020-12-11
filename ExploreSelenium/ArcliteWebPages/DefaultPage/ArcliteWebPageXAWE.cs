@@ -1,14 +1,11 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.DefaultPage
 {
-    class ArcliteWebPageXAWE : IArcliteData
+    public class ArcliteWebPageXAWE : IArcliteData
     {
         public Dictionary<string, IArcliteWebElement> elementXpaths;
 
@@ -24,7 +21,6 @@ namespace ExploreSelenium.ArcliteWebPages.DefaultPage
 
         public ArcliteWebPageXAWE(IArclitePage page)
         {
-
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
 
             home = new KeyValuePair<string, IArcliteWebElement>("Home", new ArcliteButton("Home", "//a/i[@class='fa fa-home arc-fa-2x']"));
@@ -53,8 +49,8 @@ namespace ExploreSelenium.ArcliteWebPages.DefaultPage
             settings = new KeyValuePair<string, IArcliteWebElement>("Configuration", new ArcliteButton("Configuration", "//a[@id='arc-config']"));
             user = new KeyValuePair<string, IArcliteWebElement>("User Information", new ArcliteButton("User Information", "//li[@class='nav-item dropdown']/a"));
         }
-        //Dictionary<element name, XPath>
 
+        //Dictionary<element name, XPath>
 
         public void setElementXpaths()
         {
@@ -67,7 +63,6 @@ namespace ExploreSelenium.ArcliteWebPages.DefaultPage
             this.elementXpaths.Add(workflowBuilder.Key, workflowBuilder.Value);
             this.elementXpaths.Add(settings.Key, settings.Value);
             this.elementXpaths.Add(user.Key, user.Value);
-
         }
     }
 }

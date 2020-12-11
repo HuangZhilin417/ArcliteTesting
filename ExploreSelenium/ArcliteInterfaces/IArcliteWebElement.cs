@@ -1,32 +1,34 @@
 ﻿using ExploreSelenium.ArcliteInputs;
 using ExploreSelenium.ArcliteWebElementActionsVisitor;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebElements
 {
+    /*
+     * repersents each interactive web element in ArcLite
+     */
 
-    public enum ArcliteWebElementType{
-        Textbox,
-        Select,
-        Calender,
-        Button,
-        Table,
-        Search
-
-        }
-
-    // repersents each interactive web element in Arclite
     public interface IArcliteWebElement
     {
+        /*
+         * A unique string for the element's name
+         */
         string elementName { get; set; }
-        string elementXPath { get; set; }
-        ArcliteWebElementType elementType{get; set;}
-        void accept(IActionsVisitor visitor, InputVal input);
 
+        /*
+         * The Xpath for the element
+         */
+        string elementXPath { get; set; }
+
+        /*
+         * Getting the value of a textbox
+         */
+
+        string getValue(IActionsVisitor visitor);
+
+        /*
+         * Accepts visitor and input to perform action
+         */
+
+        void accept(IActionsVisitor visitor, InputVal input);
     }
 }

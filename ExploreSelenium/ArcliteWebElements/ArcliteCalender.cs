@@ -1,28 +1,27 @@
 ﻿using ExploreSelenium.ArcliteInputs;
 using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebElements
 {
+    /*
+     * Repersents a Calender element on ArcLite
+     */
+
     public class ArcliteCalender : ArcliteWebElement, IArcliteWebElement
     {
-        string _elementName;
-        string _elementXPath;
+        private string _elementName;
+        private string _elementXPath;
         public string _nextMonthXpath;
         public string _firstDateXpath;
-        IWebElement _element;
-        ArcliteWebElementType _elementType;
+        private IWebElement _element;
+
+        /*
+         * Creates a Calender variable with its specific name and xpath
+         */
 
         public ArcliteCalender(string name, string xPath, string nextMonthXpath, string firstDateXpath) : base(name, xPath)
         {
-            _elementType = ArcliteWebElementType.Calender;
             _elementName = base.elementName;
             _elementXPath = base.elementXPath;
             _nextMonthXpath = nextMonthXpath;

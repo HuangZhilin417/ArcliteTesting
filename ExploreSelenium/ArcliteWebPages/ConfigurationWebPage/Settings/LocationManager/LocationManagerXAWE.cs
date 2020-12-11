@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.LocationManager
 {
@@ -24,6 +21,21 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Location
 
         public LocationManagerXAWE(IArclitePage page)
         {
+            this.initPage();
+            this.setElementXpaths();
+            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
+        }
+
+        //Dictionary<element name, XPath>
+
+        public LocationManagerXAWE()
+        {
+            this.initPage();
+        }
+
+        //Dictionary<element name, XPath>
+        private void initPage()
+        {
             IArcliteWebElement confirmDelete = new ArcliteButton("Checklist Category Confirm Delete", "//a[@onclick='DeleteWatehouseById()']");
             IArcliteWebElement cancelDelete = new ArcliteButton("Checklist Category Cancel Delete", "//a[@onclick='DeleteWatehouseById()']/parent::div/a/i[@class='fas fa-times-circle arc-fa-2x']");
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
@@ -37,12 +49,7 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Location
             description = new KeyValuePair<string, IArcliteWebElement>("Location Manager Description", new ArcliteTextBox("Location Manager Description", "//textarea[@id='warehouseDescription']"));
             save = new KeyValuePair<string, IArcliteWebElement>("Location Manager Save", new ArcliteButton("Location Manager Save", "//button[@class='btn arc-btn-icon']"));
             cancel = new KeyValuePair<string, IArcliteWebElement>("Location Manager Cancel", new ArcliteButton("Location Manager Cancel", "//form[@id='addWarehouseForm']/div/a"));
-
-            this.setElementXpaths();
-            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
-        //Dictionary<element name, XPath>
-
 
         public void setElementXpaths()
         {

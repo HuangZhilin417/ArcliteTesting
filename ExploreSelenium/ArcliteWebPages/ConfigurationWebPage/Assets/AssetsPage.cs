@@ -1,21 +1,27 @@
 ﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteInterfaces;
 using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using ExploreSelenium.ArcliteWebElements;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Assets
 {
+    /*
+     * Repersents the Assets Page on ArcLite
+     */
+
     public class AssetsPage : ConfigurationsPage, IArclitePage
     {
         new public string _pageTitle;
         new public Dictionary<string, IArcliteWebElement> _pageElements;
         new public AssetsXAWE pageInfo;
-        IActionsVisitor _visitor;
-        public AssetsPage(IActionsVisitor visitor) : base(visitor)
+        private IActionsVisitor _visitor;
+
+        /*
+         * Creates a Assets page and initializes page title and all of this page's Xpath
+         */
+
+        public AssetsPage(IActionsVisitor visitor, IArcliteInputs inputs) : base(visitor, inputs)
         {
             base.pageTitle = "Assets Page";
             _visitor = visitor;
@@ -23,19 +29,27 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Assets
             _pageElements = base.pageElements;
         }
 
+        /*
+         * runs the test for Asset
+         */
+
         new public void runTests(ArcliteTestAction action)
         {
-            Util.navigateToWeb(this, _visitor, true);
+            Util.navigateToWeb(this, _visitor, true, inputs);
             switch (action)
             {
                 case ArcliteTestAction.add:
+                    System.Console.WriteLine("Adding Assets");
                     addingAssets();
+                    System.Console.WriteLine("Finished Adding Assets");
                     break;
+
                 case ArcliteTestAction.delete:
+                    System.Console.WriteLine("Deleting Assets");
                     deletingAssets();
+                    System.Console.WriteLine("Finished Deleting Assets");
                     break;
             }
-
         }
 
         private void addingAssets()

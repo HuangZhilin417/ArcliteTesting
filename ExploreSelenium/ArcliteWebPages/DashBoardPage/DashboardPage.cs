@@ -1,32 +1,38 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInterfaces;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using ExploreSelenium.ArcliteWebElements;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages
 {
-    class DashboardPage : ArcliteWebPage
+    /*
+    * Repersents the Dashboard Page on ArcLite
+    */
+
+    public class DashboardPage : ArcliteWebPage
     {
         public string _pageTitle;
         public Dictionary<string, IArcliteWebElement> _pageElements;
         private WebDriverWait _wait;
         public DashboardPageXAWE pageInfo;
-        IWebDriver _driver;
-        public DashboardPage(WebDriverWait driverWait, IWebDriver driver)
+
+        /*
+        * Creates a Dashboard page and initializes page title and all of this page's Xpath
+        */
+
+        public DashboardPage(IActionsVisitor visitor, IArcliteInputs inputs) : base(visitor, inputs)
         {
             pageInfo = new DashboardPageXAWE(this);
             base.pageTitle = "Dashboard";
-            _driver = driver;
         }
+
+        /*
+         * runs the test for Dashboard
+         */
 
         new public void runTests()
         {
         }
-
     }
 }

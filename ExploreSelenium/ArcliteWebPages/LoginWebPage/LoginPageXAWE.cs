@@ -1,11 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages
 {
@@ -16,19 +12,19 @@ namespace ExploreSelenium.ArcliteWebPages
         public KeyValuePair<string, IArcliteWebElement> username;
         public KeyValuePair<string, IArcliteWebElement> password;
         public KeyValuePair<string, IArcliteWebElement> signIn;
+
         public LoginPageXAWE(IArclitePage page)
         {
-
             this.initPage();
             this.setElementXpaths();
             this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
+
         public LoginPageXAWE()
         {
-
             this.initPage();
-           
         }
+
         //Dictionary<element name, XPath>
         private void initPage()
         {
@@ -38,13 +34,11 @@ namespace ExploreSelenium.ArcliteWebPages
             signIn = new KeyValuePair<string, IArcliteWebElement>("Sign In", new ArcliteButton("Sign In", "//button[@id='btnlogin']"));
         }
 
-            public void setElementXpaths()
+        public void setElementXpaths()
         {
             this.elementXpaths.Add(username.Key, username.Value);
             this.elementXpaths.Add(password.Key, password.Value);
             this.elementXpaths.Add(signIn.Key, signIn.Value);
         }
-
-
     }
 }

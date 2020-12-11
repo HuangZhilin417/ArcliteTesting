@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Personnel
 {
@@ -23,8 +20,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Personnel
         public KeyValuePair<string, IArcliteWebElement> confirmPassword;
         public KeyValuePair<string, IArcliteWebElement> email;
         public KeyValuePair<string, IArcliteWebElement> department;
-        
-
 
         public KeyValuePair<string, IArcliteWebElement> title;
         public KeyValuePair<string, IArcliteWebElement> qualification;
@@ -32,19 +27,15 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Personnel
         public KeyValuePair<string, IArcliteWebElement> save;
         public KeyValuePair<string, IArcliteWebElement> cancel;
 
-
         public PersonnelXAWE(IArclitePage page)
         {
-
             this.initPage();
             this.setElementXpaths();
             this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
 
-
         public PersonnelXAWE()
         {
-
             this.initPage();
         }
 
@@ -73,8 +64,8 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Personnel
             save = new KeyValuePair<string, IArcliteWebElement>("Personnel Save", new ArcliteButton("Personnel Save", "//*[@id='btnSave'][@onclick='SaveUpdatePersonnel(0)']"));
             cancel = new KeyValuePair<string, IArcliteWebElement>("Personnel Cancel", new ArcliteTextBox("Personnel Cancel", "//button[@id='btnclose']"));
         }
-        //Dictionary<element name, XPath>
 
+        //Dictionary<element name, XPath>
 
         public void setElementXpaths()
         {
@@ -95,8 +86,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Personnel
             this.elementXpaths.Add(role.Key, role.Value);
             this.elementXpaths.Add(save.Key, save.Value);
             this.elementXpaths.Add(cancel.Key, cancel.Value);
-
         }
     }
 }
-

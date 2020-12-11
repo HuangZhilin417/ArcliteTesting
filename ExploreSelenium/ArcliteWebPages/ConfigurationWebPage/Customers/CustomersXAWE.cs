@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Customers
 {
@@ -41,6 +38,7 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Customers
         {
             this.initPage();
         }
+
         //Dictionary<element name, XPath>
         //Dictionary<element name, XPath>
         private void initPage()
@@ -85,7 +83,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Customers
             this.elementXpaths.Add(personInCharge.Key, personInCharge.Value);
             this.elementXpaths.Add(save.Key, save.Value);
             this.elementXpaths.Add(cancel.Key, cancel.Value);
-
         }
     }
 }

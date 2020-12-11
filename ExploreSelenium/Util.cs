@@ -1,23 +1,26 @@
 ﻿using ExploreSelenium.ArcliteInputs;
+using ExploreSelenium.ArcliteInterfaces;
 using ExploreSelenium.ArcliteWebElementActionsVisitor;
-using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteWebPages;
 using ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Markup;
+using System.IO;
+using System.Reflection;
 
 namespace ExploreSelenium
 {
+    /*
+     * Tool class
+     */
+
     public static class Util
     {
-        static Dictionary<String, int> ord = new Dictionary<string, int>();
+        /*
+         * gets the fs-option data value based on the given string and select element
+         */
 
         public static string getDataValue(string s, SelectElement element)
         {
@@ -29,35 +32,51 @@ namespace ExploreSelenium
                     return item.GetAttribute("value");
                 }
             }
-            throw new Exception("can't find the wanted string");
+            throw new Exception("can't find the wanted string: " + s);
         }
 
-        public static int getOrder()
+        /*
+         * Get file location of the current file location
+         */
+
+        public static string getCurrentFileLocation(String fileName)
         {
-            return 0;
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            dir = dir + @"\" + fileName;
+
+            return dir;
         }
 
-        public static void navigateToWeb(IArclitePage page, IActionsVisitor visitor, bool isFinal)
-        {
-            IArclitePage defaultPage = new ArcliteWebPage(visitor);
+        /*
+         * Get to that page given
+         */
 
-            IArclitePage configurationPage = new ConfigurationsPage(visitor);
-            IArclitePage settingPage = new SettingsPage(visitor);
+        public static void navigateToWeb(IArclitePage page, IActionsVisitor visitor, bool isFinal, IArcliteInputs inputs)
+        {
+            IArclitePage defaultPage = new ArcliteWebPage(visitor, inputs);
+
+            IArclitePage configurationPage = new ConfigurationsPage(visitor, inputs);
+            IArclitePage settingPage = new SettingsPage(visitor, inputs);
             List<IArclitePage> webPageList = new List<IArclitePage>();
             webPageList.Add(defaultPage);
             webPageList.Add(configurationPage);
             webPageList.Add(settingPage);
 
             int count = 0;
-            foreach (IArclitePage p in webPageList) {
+            foreach (IArclitePage p in webPageList)
+            {
                 if (count > 0)
                 {
-                    navigateToWeb(p, visitor, false);
+                    Util.navigateToWeb(p, visitor, false, inputs);
+                }
+                if (count == 2)
+                {
+                    visitor.switchFrame();
                 }
                 if (p.pageElements.ContainsKey(page.pageTitle))
                 {
                     p.pageElements[page.pageTitle].accept(visitor, new InputVal());
-                    if (isFinal)
+                    if (isFinal && count != 2)
                     {
                         visitor.switchFrame();
                     }
@@ -68,13 +87,16 @@ namespace ExploreSelenium
             throw new ArgumentException("page does not exist");
         }
 
-        public static string randomString(){
+        /*
+         * Returns a random string
+         */
+
+        public static string randomString()
+        {
             string result = "";
             Random rand = new Random();
             result = rand.Next(0, 16782312).ToString();
             return result;
-
         }
-
     }
 }

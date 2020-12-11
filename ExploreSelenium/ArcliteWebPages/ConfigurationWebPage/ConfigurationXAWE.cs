@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationPage
 {
@@ -21,9 +18,8 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationPage
         public KeyValuePair<string, IArcliteWebElement> checklists;
         public KeyValuePair<string, IArcliteWebElement> settings;
 
-        public ConfigurationXAWE(IArclitePage page) 
+        public ConfigurationXAWE(IArclitePage page)
         {
-
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
 
             inventory = new KeyValuePair<string, IArcliteWebElement>("Inventory Page", new ArcliteButton("Inventory Page", "//a[@id='inventory']"));
@@ -38,8 +34,8 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationPage
             this.setElementXpaths();
             this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
-        //Dictionary<element name, XPath>
 
+        //Dictionary<element name, XPath>
 
         public void setElementXpaths()
         {
@@ -51,8 +47,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationPage
 
             this.elementXpaths.Add(checklists.Key, checklists.Value);
             this.elementXpaths.Add(settings.Key, settings.Value);
-       
-
         }
     }
 }

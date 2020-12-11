@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Checklists
 {
@@ -47,8 +44,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Checklists
 
         public CheckListsXAWE(IArclitePage page)
         {
-
-
             this.initPage();
             this.setElementXpaths();
             this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
@@ -58,29 +53,32 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Checklists
         {
             this.initPage();
         }
+
         //Dictionary<element name, XPath>
         private void initPage()
         {
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
 
+            IArcliteWebElement approveRequestConfirm = new ArcliteButton("Checklist Category Approve Request Submit", "//a[@onclick='SaveApprovalRequest()']");
+            IArcliteWebElement approveRequestCancel = new ArcliteButton("Checklist Category Approve Request Cancel", "//a[@onclick='SaveApprovalRequest()']/parent::div/a[@title='Close']");
             search = new KeyValuePair<string, IArcliteWebElement>("Checklist Search", new ArcliteSearch("Checklist Search", "//div[@id='gvChecklist_filter']/label/input", null));
-            checklistDataTable = new KeyValuePair<string, IArcliteWebElement>("Checklist Data Table", new ArcliteDataTable("Checklist Data Table", search.Value, "//td[text()='", "']/parent::tr", "/td[@class='details-control']", "//td[text()='", "']/parent::tr/td/a[text()='Take Action']", null, null));
+            checklistDataTable = new KeyValuePair<string, IArcliteWebElement>("Checklist Data Table", new ArcliteDataTable("Checklist Data Table", search.Value, "//td[text()='", "']/parent::tr", "/td[@class='details-control']", "//td[text()='", "']/parent::tr/td/a[text()='Submit Approval']", approveRequestConfirm, approveRequestCancel));
             add = new KeyValuePair<string, IArcliteWebElement>("Checklist Add", new ArcliteButton("Checklist Add", "//a[@title='Add Checklist']/i"));
             manageCategories = new KeyValuePair<string, IArcliteWebElement>("Checklist Manage Categories", new ArcliteButton("Checklist Manage Categories", "//a[text()='Manage Categories']"));
             all = new KeyValuePair<string, IArcliteWebElement>("Checklist All", new ArcliteButton("Checklist All", "//a[@id='dvAllChklst-tab']"));
 
             approve = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve", new ArcliteButton("Checklist Approve", "//a[@id='dvAllChklst-approval-tab']"));
             approveSearch = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Search", new ArcliteSearch("Checklist Approve Search", "//div[@id='tblCreationApprovals_filter']/label/input", null));
+
             approveDataTable = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Data Table", new ArcliteDataTable("Checklist Approve Data Table", approveSearch.Value, "//td[normalize-space(text()) = '", "']/parent::tr", "/td/a", null, null));
             name = new KeyValuePair<string, IArcliteWebElement>("Checklist Name", new ArcliteTextBox("Checklist Name", "//*[@id='txtTemplateName']"));
-            categoryName = new KeyValuePair<string, IArcliteWebElement>("Checklist Category Name", new ArcliteSelect("Checklist Category Name", null, "//select[@id='ddlCategoryList']"));
-
+            categoryName = new KeyValuePair<string, IArcliteWebElement>("Checklist Category Name", new ArcliteSelect("Checklist Category Name", "//select[@id='ddlCategoryList']", "//select[@id='ddlCategoryList']"));
 
             addCategory = new KeyValuePair<string, IArcliteWebElement>("Checklist Add Category", new ArcliteButton("Checklist Add Category", "//a[@onclick='ShowAddChecklistCategoryPopup()']"));
             addCategoryName = new KeyValuePair<string, IArcliteWebElement>("Checklist Add Category Name", new ArcliteTextBox("Checklist Add Category Name", "//input[@id='txtCategoryName']"));
             categorySave = new KeyValuePair<string, IArcliteWebElement>("Checklist Category Save", new ArcliteButton("Checklist Category Save", "//button[@id='btnSaveCategory']"));
             categoryCancel = new KeyValuePair<string, IArcliteWebElement>("Checklist Category Cancel", new ArcliteButton("Checklist Category Cancel", "//button[@onclick='closeAddChecklistCategoryPopup();']"));
-            categorySearch = new KeyValuePair<string, IArcliteWebElement>("Checklist Search", new ArcliteSearch("Checklist Search", "//div[@id='tblChecklistCategory_filter']/label/input']", null));
+            categorySearch = new KeyValuePair<string, IArcliteWebElement>("Checklist Category Search", new ArcliteSearch("Checklist Category Search", "//div[@id='tblChecklistCategory_filter']/label/input']", null));
 
             IArcliteWebElement confirmDelete = new ArcliteButton("Checklist Category Confirm Delete", "//a[@onclick='DeleteChecklistCategory();']");
             IArcliteWebElement cancelDelete = new ArcliteButton("Checklist Category Cancel Delete", "//a[@onclick='DeleteCategoryCancel();']");
@@ -91,20 +89,17 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Checklists
             footer = new KeyValuePair<string, IArcliteWebElement>("Checklist Footer", new ArcliteTextBox("Checklist Footer", "//*[@id='txtFooter']"));
             description = new KeyValuePair<string, IArcliteWebElement>("Checklist Description", new ArcliteTextBox("Checklist Description", "//*[@id='txtDescription']"));
 
-
-
             approvePassword = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Password", new ArcliteTextBox("Checklist Approve Password", "//input[@id='txtPassword']"));
             approveStatus = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Status", new ArcliteSelect("Checklist Approve Status", "//select[@id='ddlApprovalStatus']", "//select[@id='ddlApprovalStatus']"));
-            approveConfirm = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Confirm", new ArcliteTextBox("Checklist Approve Confirm", "//button[@id='btnApproveStep']"));
-            approveCancel = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Cancel", new ArcliteTextBox("Checklist Approve Cancel", "//button[@class='btn arc-btn-icon-red ml-1']"));
+            approveConfirm = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Confirm", new ArcliteButton("Checklist Approve Confirm", "//button[@id='btnApproveStep']"));
+            approveCancel = new KeyValuePair<string, IArcliteWebElement>("Checklist Approve Cancel", new ArcliteButton("Checklist Approve Cancel", "//button[@class='btn arc-btn-icon-red ml-1']"));
             save = new KeyValuePair<string, IArcliteWebElement>("Checklist Save", new ArcliteButton("Checklist Save", "//*[@id='btnSaveChecklist']"));
 
             formNumber = new KeyValuePair<string, IArcliteWebElement>("Checklist Form Number", new ArcliteTextBox("Checklist Form Number", "//input[@id='txtFileNo']"));
             cancel = new KeyValuePair<string, IArcliteWebElement>("Checklist Cancel", new ArcliteTextBox("Checklist Cancel", "//*[@id='btnCancelChecklist']"));
         }
 
-
-            public void setElementXpaths()
+        public void setElementXpaths()
         {
             this.elementXpaths.Add(search.Key, search.Value);
             this.elementXpaths.Add(checklistDataTable.Key, checklistDataTable.Value);
@@ -130,9 +125,14 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Checklists
             this.elementXpaths.Add(description.Key, description.Value);
             this.elementXpaths.Add(save.Key, save.Value);
 
+            this.elementXpaths.Add(approvePassword.Key, approvePassword.Value);
+            this.elementXpaths.Add(approveStatus.Key, approveStatus.Value);
             this.elementXpaths.Add(categorySearch.Key, categorySearch.Value);
             this.elementXpaths.Add(approveSearch.Key, approveSearch.Value);
             this.elementXpaths.Add(cancel.Key, cancel.Value);
-    }
+
+            this.elementXpaths.Add(approveConfirm.Key, approveConfirm.Value);
+            this.elementXpaths.Add(approveCancel.Key, approveCancel.Value);
+        }
     }
 }

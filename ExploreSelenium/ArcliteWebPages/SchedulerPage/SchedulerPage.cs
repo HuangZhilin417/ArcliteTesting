@@ -1,15 +1,4 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
-using ExploreSelenium.ArcliteWebElements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
-
-namespace ExploreSelenium.ArcliteWebPages
+﻿namespace ExploreSelenium.ArcliteWebPages
 {
     /*public class SchedulerPage : ArcliteWebPage
     {
@@ -26,7 +15,5 @@ namespace ExploreSelenium.ArcliteWebPages
             _visitor = visitor;
             setElements();
         }
-
-
     }*/
 }

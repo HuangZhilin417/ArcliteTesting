@@ -1,13 +1,11 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
-using OpenQA.Selenium.Support.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages
 {
+    /*
+     * Test actions
+     */
 
     public enum ArcliteTestAction
     {
@@ -17,15 +15,27 @@ namespace ExploreSelenium.ArcliteWebPages
         login,
         approve
     }
+
+    /*
+     * Repersents a Arclite Web Page
+     */
+
     public interface IArclitePage
     {
-        //unique page title for every page
-        string pageTitle { get; set;}
+        /*
+         * sets and gets unique page title for every page
+         */
+        string pageTitle { get; set; }
 
-        //contains the key (name of the web element or the page title it leads to)
+        /*
+         * contains the key (name of the web element or the page title it leads to), and the actual element of Arclite
+         */
         Dictionary<string, IArcliteWebElement> pageElements { get; set; }
 
-        //run tests for current page
+        /*
+         * run tests for the page, and perfroms different test based on the given action
+         */
+
         void runTests(ArcliteTestAction action);
     }
 }

@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Suppliers
 {
@@ -41,6 +38,7 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Suppliers
         {
             this.initPage();
         }
+
         //Dictionary<element name, XPath>
 
         private void initPage()
@@ -48,7 +46,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Suppliers
             IArcliteWebElement confirmDelete = new ArcliteButton("Checklist Category Confirm Delete", "//a[@onclick='DeleteSupplier()']");
             IArcliteWebElement cancelDelete = new ArcliteButton("Checklist Category Cancel Delete", "//a[@onclick='DeleteSupplier()']/parent::div/a/i[@class='fas fa-times-circle arc-fa-2x']");
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
-
 
             search = new KeyValuePair<string, IArcliteWebElement>("Suppliers Search", new ArcliteSearch("Suppliers Search", "//div[@id='tbSupplier_filter']/label/input", null));
             dataTable = new KeyValuePair<string, IArcliteWebElement>("Suppliers Data Table", new ArcliteDataTable("Suppliers Data Table", search.Value, "//td[text()='", "']/parent::tr", "/td/a", confirmDelete, cancelDelete));
@@ -88,7 +85,6 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Suppliers
             this.elementXpaths.Add(description.Key, description.Value);
             this.elementXpaths.Add(save.Key, save.Value);
             this.elementXpaths.Add(cancel.Key, cancel.Value);
-
         }
     }
 }

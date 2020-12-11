@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Currency
 {
@@ -23,6 +20,20 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Currency
 
         public CurrencyXAWE(IArclitePage page)
         {
+            this.initPage();
+            this.setElementXpaths();
+            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
+        }
+
+        //Dictionary<element name, XPath>
+        public CurrencyXAWE()
+        {
+            this.initPage();
+        }
+
+        //Dictionary<element name, XPath>
+        private void initPage()
+        {
             IArcliteWebElement confirmDelete = new ArcliteButton("Checklist Category Confirm Delete", "//a[@onclick='DeleteUOM()']");
             IArcliteWebElement cancelDelete = new ArcliteButton("Checklist Category Cancel Delete", "//a[@onclick='DeleteUOM()']/parent::div/a/i[@class='fas fa-times-circle arc-fa-2x']");
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
@@ -35,12 +46,7 @@ namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings.Currency
 
             save = new KeyValuePair<string, IArcliteWebElement>("Currency Save", new ArcliteButton("Currency Save", "//button[@id='btnSave']"));
             cancel = new KeyValuePair<string, IArcliteWebElement>("Currency Cancel", new ArcliteButton("Currency Cancel", "//button[@id='btnclose']"));
-
-            this.setElementXpaths();
-            this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
-        //Dictionary<element name, XPath>
-
 
         public void setElementXpaths()
         {

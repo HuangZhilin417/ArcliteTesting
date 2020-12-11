@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.Inventory
 {
@@ -63,6 +60,7 @@ namespace ExploreSelenium.ArcliteWebPages.Inventory
             save = new KeyValuePair<string, IArcliteWebElement>("Inventory Save", new ArcliteButton("Inventory Save", "//button[@id='btnSave']"));
             cancel = new KeyValuePair<string, IArcliteWebElement>("Inventory Cancel", new ArcliteTextBox("Inventory Cancel", "//button[@id='btnclose']"));
         }
+
         //Dictionary<element name, XPath>
 
         public InventoryXAWE()
@@ -70,7 +68,7 @@ namespace ExploreSelenium.ArcliteWebPages.Inventory
             this.init();
         }
 
-            public void setElementXpaths()
+        public void setElementXpaths()
         {
             this.elementXpaths.Add(search.Key, search.Value);
             this.elementXpaths.Add(dataTable.Key, dataTable.Value);
@@ -89,7 +87,6 @@ namespace ExploreSelenium.ArcliteWebPages.Inventory
             this.elementXpaths.Add(notes.Key, notes.Value);
             this.elementXpaths.Add(save.Key, save.Value);
             this.elementXpaths.Add(cancel.Key, cancel.Value);
-
         }
     }
 }

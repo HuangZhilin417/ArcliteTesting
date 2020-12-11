@@ -1,26 +1,36 @@
-﻿using ExploreSelenium.ArcliteWebElementActionsVisitor;
+﻿using ExploreSelenium.ArcliteInterfaces;
+using ExploreSelenium.ArcliteWebElementActionsVisitor;
 using ExploreSelenium.ArcliteWebElements;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages.ConfigurationWebPage.Settings
 {
-    class SettingsPage : ArcliteWebPage, IArclitePage
+    /*
+     * Repersents the Settings Page on ArcLite
+     */
+
+    public class SettingsPage : ArcliteWebPage, IArclitePage
     {
         public string _pageTitle;
         public Dictionary<string, IArcliteWebElement> _pageElements;
         public SettingsXAWE pageInfo;
-        IActionsVisitor _visitor;
-        public SettingsPage(IActionsVisitor visitor) : base()
+        private IActionsVisitor _visitor;
+
+        /*
+         * Creates a Settings page and initializes page title and all of this page's Xpath
+         */
+
+        public SettingsPage(IActionsVisitor visitor, IArcliteInputs inputs) : base(visitor, inputs)
         {
             base.pageTitle = "Settings Page";
             _visitor = visitor;
             pageInfo = new SettingsXAWE(this);
             _pageElements = base.pageElements;
         }
+
+        /*
+         * runs the test for Settings
+         */
 
         new public void runTests()
         {

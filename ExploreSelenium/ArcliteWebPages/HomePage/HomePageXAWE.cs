@@ -1,10 +1,7 @@
 ﻿using ExploreSelenium.ArcliteWebElements;
 using ExploreSelenium.ArcliteXpaths;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExploreSelenium.ArcliteWebPages
 {
@@ -22,7 +19,6 @@ namespace ExploreSelenium.ArcliteWebPages
 
         public HomePageXAWE(IArclitePage page)
         {
-
             elementXpaths = new Dictionary<string, IArcliteWebElement>();
 
             homeOrderTracking = new KeyValuePair<string, IArcliteWebElement>("Home Tracking", new ArcliteTextBox("Home Tracking", "//a[@onclick=\"selectHeader('#arc-scheduler-sales')\"]"));
@@ -36,8 +32,8 @@ namespace ExploreSelenium.ArcliteWebPages
             this.setElementXpaths();
             this.elementXpaths.ToList().ForEach(x => page.pageElements.Add(x.Key, x.Value));
         }
-        //Dictionary<element name, XPath>
 
+        //Dictionary<element name, XPath>
 
         public void setElementXpaths()
         {
